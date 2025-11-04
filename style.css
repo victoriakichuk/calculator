@@ -1,0 +1,28 @@
+body {
+    margin: 35px;
+    background-color: #FADDE1;
+}
+
+.header-wrapper {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+    background-color: #FFA6C1;
+    border-radius: 35px;
+    box-shadow: 10px 10px #FF87AB;
+    margin-bottom: 40px;
+}
+
+.header-wrapper h1{
+    text-align: center;
+}
+
+.calculator-wrapper {
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    background-color: #FFCAD4;
+    border-radius: 35px;
+    box-shadow: 10px 10px #F4ACB7;
+    margin-bottom: 20px;
+}
