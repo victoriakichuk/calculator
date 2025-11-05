@@ -26,3 +26,35 @@ body {
     box-shadow: 10px 10px #F4ACB7;
     margin-bottom: 20px;
 }
+
+.display {
+    display: block;
+    margin: 20px auto 40px auto;
+    width: 90%;
+    height: 3vw;
+    padding: 5px;
+    font-size: 1.2rem;
+    background-color: #bdbcbb;
+    border-radius: 35px;
+    box-shadow: 5px 5px 5px #979797;
+}
+
+.calculator-buttons {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 5px;
+    grid-gap: 10px;
+    margin: 20px auto 40px auto;
+}
+
+.calculator-buttons div {
+    display: flex;
+    background-color: #FFA6C1;
+    border-radius: 50%;
+    height: 80px;
+    font-size: 2rem;
+    box-shadow: 2px 2px #a86e7f;
+    align-items: center;
+    justify-content: center;
+}
