@@ -3,6 +3,9 @@ let previousValue = '';
 let operatorValue = '';
 let memoryValue = '';
 let result = '';
+let expression = '';
+const num = [];
+const tokens = [];
 
 const display = document.querySelector('.display');
 const recallOrClear = document.getElementById('recallOrClear');
@@ -14,41 +17,55 @@ const allClear = document.getElementById('allClear');
 const period = document.getElementById('period');
 const equal = document.getElementById('equal');
 
+function addNumbers (...num) {
+    let sum = 0;
+    for (let i = 0; i < num.length; i++) {
+        sum += num[i];
+    }
+    return sum;
+}
+
 document.querySelectorAll(".number").forEach(number => {
     number.addEventListener("click", event => {
         currentValue = currentValue + event.target.textContent;
-        display.textContent = '';
-        display.textContent = currentValue;
+        display.textContent = expression + currentValue;
     })
 })
 
 document.querySelectorAll(".operator").forEach(operator => {
     operator.addEventListener("click", event => {
-        previousValue = currentValue;
-        currentValue = "";
+        previousValue = expression + currentValue;
+        tokens.push(currentValue);
+        currentValue = '';
         operatorValue = event.target.textContent;
-        display.append(operatorValue);
+        tokens.push(operatorValue);
+        console.log(tokens);
+        expression = previousValue + operatorValue;
+        display.textContent = expression;
     })
 })
 
-function mathOperations (previousValue, currentValue, operatorValue) {
+function mathOperations () {
     if (operatorValue == "+") {
-        return result = previousValue + currentValue;
-    } else if (operatorValue == "-") {
-        return result = previousValue - currentValue;
-    } else if (operatorValue == "*") {
-        return result = previousValue * currentValue;
-    } else if (operatorValue == "/") {
-        return result = previousValue / currentValue;
-    } else if (operatorValue == "√") {
-        return result = Math.sqrt(currentValue);
-    } else if (operatorValue == "%") {
-        return (previousValue / 100) * currentValue;
-    }
+        return addNumbers(num);
+    } 
+    
+    // else if (operatorValue == "-") {
+    //     return result = Number(previousValue) - Number(currentValue);
+    // } else if (operatorValue == "*") {
+    //     return result = Number(previousValue) * Number(currentValue);
+    // } else if (operatorValue == "/") {
+    //     return result = Number(previousValue) / Number(currentValue);
+    // } else if (operatorValue == "√") {
+    //     return result = Math.sqrt(Number(currentValue));
+    // } else if (operatorValue == "%") {
+    //     return (Number(previousValue) / 100) * Number(currentValue);
+    // }
 }
 
 document.querySelector(".equal").addEventListener("click", () => {
-    result = mathOperations(previousValue, currentValue, operatorValue);
+    num.push(currentValue);
+    result = mathOperations();
     display.textContent = '';
     display.append(result);
 })
