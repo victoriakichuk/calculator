@@ -39,7 +39,6 @@ document.querySelectorAll(".operator").forEach(operator => {
         currentValue = '';
         operatorValue = event.target.textContent;
         tokens.push(operatorValue);
-        console.log(tokens);
         expression = previousValue + operatorValue;
         display.textContent = expression;
     })
@@ -49,18 +48,6 @@ function mathOperations () {
     if (operatorValue == "+") {
         return addNumbers(num);
     } 
-    
-    // else if (operatorValue == "-") {
-    //     return result = Number(previousValue) - Number(currentValue);
-    // } else if (operatorValue == "*") {
-    //     return result = Number(previousValue) * Number(currentValue);
-    // } else if (operatorValue == "/") {
-    //     return result = Number(previousValue) / Number(currentValue);
-    // } else if (operatorValue == "√") {
-    //     return result = Math.sqrt(Number(currentValue));
-    // } else if (operatorValue == "%") {
-    //     return (Number(previousValue) / 100) * Number(currentValue);
-    // }
 }
 
 document.querySelector(".equal").addEventListener("click", () => {
