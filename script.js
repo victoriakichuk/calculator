@@ -52,12 +52,30 @@ function mathOperations () {
 }
 
 function calculateExpression () {
+    let left;
+    let right;
+    let multRes;
+    let divRes;
     const firstOperations = tokens.find((element) => element == "*" || element == "/");
-    console.log(firstOperations)
+    const index = tokens.indexOf(firstOperations);
+    if (index !== 1) { //if the target element doesn't exist in the array
+        left = tokens.slice(0, index);
+        right = tokens.slice(index + 1);
+    }
+    const indexLeft = tokens.indexOf(left);
+    if (index == "*") {
+        multRes = Number(left) * Number(right);
+        tokens.splice(indexLeft, 0, "multRes");
+    }
+    if (index == "/") {
+        divRes = Number(left) / Number(right);
+        tokens.splice(indexLeft, 0, "divRes");
+    }
 }
 
 document.querySelector(".equal").addEventListener("click", () => {
     tokens.push(currentValue);
+    calculateExpression ();
     console.log(tokens)
     // Finding loop 
 
