@@ -44,15 +44,24 @@ document.querySelectorAll(".operator").forEach(operator => {
     })
 })
 
+
 function mathOperations () {
     if (operatorValue == "+") {
         return addNumbers(num);
     } 
 }
 
+function calculateExpression () {
+    const firstOperations = tokens.find((element) => element == "*" || element == "/");
+    console.log(firstOperations)
+}
+
 document.querySelector(".equal").addEventListener("click", () => {
-    num.push(currentValue);
-    result = mathOperations();
-    display.textContent = '';
-    display.append(result);
+    tokens.push(currentValue);
+    console.log(tokens)
+    // Finding loop 
+
+    // result = mathOperations();
+    // display.textContent = '';
+    // display.append(result);
 })
