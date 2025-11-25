@@ -58,9 +58,11 @@ function calculateExpression () {
     let divRes;
     const firstOperations = tokens.find((element) => element == "*" || element == "/");
     const index = tokens.indexOf(firstOperations);
-    if (index !== 1) { //if the target element doesn't exist in the array
+    if (index !== -1) { //if the target element doesn't exist in the array
         left = tokens.slice(0, index);
         right = tokens.slice(index + 1);
+        console.log(left);
+        console.log(right);
     }
     const indexLeft = tokens.indexOf(left);
     if (index == "*") {
@@ -71,15 +73,13 @@ function calculateExpression () {
         divRes = Number(left) / Number(right);
         tokens.splice(indexLeft, 0, "divRes");
     }
+
+    return tokens;
 }
 
 document.querySelector(".equal").addEventListener("click", () => {
     tokens.push(currentValue);
-    calculateExpression ();
-    console.log(tokens)
-    // Finding loop 
-
-    // result = mathOperations();
-    // display.textContent = '';
-    // display.append(result);
 })
+
+calculateExpression ();
+console.log(tokens)
