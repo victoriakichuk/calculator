@@ -58,19 +58,23 @@ function calculateExpression () {
     let divRes;
     const firstOperations = tokens.find((element) => element == "X" || element == "/");
     const index = tokens.indexOf(firstOperations);
-    if (index !== -1) { //if the target element doesn't exist in the array
-        left = tokens[index - 1];
-        right = tokens[index + 1];
-    }
-    if (tokens[index] === "X") {
-        multRes = Number(left) * Number(right);
-        tokens.splice(indexLeft, 0, "multRes");
-    }
-    if (tokens[index] === "X") {
-        divRes = Number(left) / Number(right);
-        tokens.splice(indexLeft, 0, "divRes");
-    }
 
+    for (let i = 0; i < tokens.length; i++) {
+        if (index !== -1) { 
+            left = tokens[index - 1];
+            right = tokens[index + 1];
+        }
+        indexLeft = tokens.indexOf(left); 
+        while (tokens.includes("X")) {
+            multRes = Number(left) * Number(right);
+            tokens.splice(indexLeft, 3, multRes);
+        } 
+        while (tokens.includes("/")) {
+            divRes = Number(left) / Number(right);
+            tokens.splice(indexLeft, 3, divRes);
+        }
+        console.log(tokens)
+    }
     return tokens;
 }
 
