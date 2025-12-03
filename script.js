@@ -60,13 +60,17 @@ function calculateExpression() {
         );
         const index = tokens.indexOf(firstOperations);
         if (firstOperations == "X") {
+            left = tokens[index - 1];
+            right = tokens[index + 1];
             const result = performOperation(firstOperations, left, right)
             tokens.splice(index - 1, 3, result);
         }
 
         if (firstOperations == "/") {
+            left = tokens[index - 1];
+            right = tokens[index + 1];
             const result = performOperation(firstOperations, left, right)
-            tokens.splice(index - 1, 3, divRes);
+            tokens.splice(index - 1, 3, result);
         }
         if (tokens.length == 1) {
             finalExpression = tokens[0];
@@ -78,13 +82,17 @@ function calculateExpression() {
         );
         const index = tokens.indexOf(nextOperations);
         if (nextOperations == "+") {
-            const result = performOperation(firstOperations, left, right)
-            tokens.splice(index - 1, 3, sum);
+            left = tokens[index - 1];
+            right = tokens[index + 1];
+            const result = performOperation(nextOperations, left, right)
+            tokens.splice(index - 1, 3, result);
         }
 
         if (nextOperations == "-") {
-            const result = performOperation(firstOperations, left, right)
-            tokens.splice(index - 1, 3, sub);
+            left = tokens[index - 1];
+            right = tokens[index + 1];
+            const result = performOperation(nextOperations, left, right)
+            tokens.splice(index - 1, 3, result);
         }
         if (tokens.length == 1) {
             finalExpression = tokens[0];
