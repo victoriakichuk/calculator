@@ -27,8 +27,7 @@ body {
     margin-bottom: 20px;
 }
 
-.display {
-    display: block;
+.display-container {
     margin: 20px auto 40px auto;
     width: 90%;
     height: 3vw;
@@ -37,6 +36,13 @@ body {
     background-color: #bdbcbb;
     border-radius: 35px;
     box-shadow: 5px 5px 5px #979797;
+}
+
+.display {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .calculator-buttons {
